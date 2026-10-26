@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: YOUR_DOCKERHUB_USERNAME/quickbite:latest
+    build: .
+    container_name: quickbite-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: always
+    networks:
+      - quickbite-network
+
+  backend:
+    image: hashicorp/http-echo:latest
+    container_name: quickbite-backend
+    command: ["-text=QuickBite Food-Ordering Dummy Backend Service Running"]
+    depends_on:
+      - database
+    restart: always
+    networks:
+      - quickbite-network
+
+  database:
+    image: mysql:8.0
+    container_name: quickbite-database
+    environment:
+      MYSQL_ROOT_PASSWORD: quickbiteroot
+      MYSQL_DATABASE: quickbite_orders
+    restart: always
+    networks:
+      - quickbite-network
+
+networks:
+  quickbite-network:
+    driver: bridge
