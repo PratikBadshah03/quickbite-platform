@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        IMAGE_NAME = "PratikBadshah03/quickbite"
+        IMAGE_NAME = "pratikbadshah03/quickbite"
         APP_SERVER = "16.59.52.14"
     }
     stages {
