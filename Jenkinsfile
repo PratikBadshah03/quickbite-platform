@@ -2,12 +2,12 @@ pipeline {
     agent any
     environment {
         IMAGE_NAME = "PratikBadshah03/quickbite"
-        APP_SERVER = "YOUR_APP_SERVER_PUBLIC_IP"
+        APP_SERVER = "16.59.52.14"
     }
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/YOUR_GITHUB_USERNAME/quickbite-platform.git'
+                git branch: 'main', url: 'https://github.com/PratikBadshah03/quickbite-platform.git'
             }
         }
         stage('Build') {
